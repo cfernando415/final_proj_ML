@@ -11063,3 +11063,11 @@ Processing by Api::V1::DiseasesController#index as HTML
 Completed 200 OK in 91ms (Views: 84.8ms | ActiveRecord: 2.0ms)
 
 
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2018-12-27 16:16:39 -0500
+Processing by Api::V1::DiseasesController#index as HTML
+  [1m[36mDisease Load (0.5ms)[0m  [1m[34mSELECT "diseases".* FROM "diseases"[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.13ms)
+Completed 200 OK in 79ms (Views: 75.1ms | ActiveRecord: 1.4ms)
+
+
