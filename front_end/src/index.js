@@ -33,15 +33,16 @@ function dataHandler(x_vals, y_vals, data_arr) {
         }
     });
     
+    // debugger;
 
     const trace1 = {
-        x: x_vals,
-        y: y_vals,
+        x: data_arr.filter(el => el.sex === 'M').map(el => el.year),
+        y: data_arr.filter(el => el.sex === 'M').map(el => el.deaths),
         mode: 'markers+Text',
         type: 'scatter',
         name: 'Male',
         marker: {
-            color: 'rgb(219, 64, 82)'
+            color: 'rgb(36,	98,	175)'
         }
     };
 
@@ -60,6 +61,17 @@ function dataHandler(x_vals, y_vals, data_arr) {
         type: 'scatter'
     };
 
+    const trace3 = {
+        x: data_arr.filter(el => el.sex === 'F').map(el => el.year),
+        y: data_arr.filter(el => el.sex === 'F').map(el => el.deaths),
+        mode: 'markers+Text',
+        type: 'scatter',
+        name: 'Female',
+        marker: {
+            color: 'rgb(233, 121, 127)'
+        }
+    };
+
     let layout = {
         autosize: true,
         width: 500,
@@ -73,11 +85,11 @@ function dataHandler(x_vals, y_vals, data_arr) {
         },
       };
     
-    let data = [trace1, trace2];
+    let data = [trace1, trace2, trace3];
 
     Plotly.newPlot('tester', data, layout);
 
-    
+
 }
 
 function predict(x_args, m, b) {

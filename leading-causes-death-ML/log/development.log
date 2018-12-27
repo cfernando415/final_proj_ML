@@ -11071,3 +11071,27 @@ Processing by Api::V1::DiseasesController#index as HTML
 Completed 200 OK in 79ms (Views: 75.1ms | ActiveRecord: 1.4ms)
 
 
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2018-12-27 16:31:18 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (1.0ms)[0m  [1m[34mSELECT "diseases".* FROM "diseases"[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (11.05ms)
+Completed 200 OK in 25ms (Views: 22.8ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2018-12-27 16:41:42 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (6.4ms)[0m  [1m[34mSELECT "diseases".* FROM "diseases"[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (38.89ms)
+Completed 200 OK in 129ms (Views: 116.1ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2018-12-27 16:43:50 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (1.3ms)[0m  [1m[34mSELECT "diseases".* FROM "diseases"[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (24.95ms)
+Completed 200 OK in 51ms (Views: 48.9ms | ActiveRecord: 1.3ms)
+
+
