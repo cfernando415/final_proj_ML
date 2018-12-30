@@ -8,7 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
             loadNavigation(data);
         })
     document.getElementById("nav").addEventListener("click", navHandler);
+    document.getElementById("search").addEventListener("input", searchHandler);
 })
+
 
 // let a, b, c, d;
 // let data_x, data_y;
@@ -124,7 +126,7 @@ function dataHandler(x_vals, y_vals, data_arr) {
           r: 50,
           b: 100,
           t: 100,
-          pad: 4
+          pad: 3
         },
       };
     
@@ -162,6 +164,7 @@ function findYIntercept(n, sumOfX, sumOfY, slope) {
 
 function loadNavigation(arg) {
     const divRoot = document.getElementById("nav");
+    divRoot.innerHTML = "";
     const categories = arg.map(el => el.leading_cause).filter((x, i, a) => a.indexOf(x) == i);
 
     for(el of categories) {
@@ -186,4 +189,16 @@ function navHandler(e) {
                 dataHandler(x_axis, y_axis, filteredJSON);
             })
     }
+}
+
+function searchHandler(e) {
+    // debugger;
+    const q = e.target.value.toLocaleLowerCase();
+    fetch("http://localhost:3000/api/v1/diseases")
+        .then(res => res.json())
+        .then(json => {
+            const qResults = json.filter(el => el.leading_cause.toLocaleLowerCase().includes(q));
+            loadNavigation(qResults);
+        })
+    
 }
