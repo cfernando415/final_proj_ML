@@ -1,0 +1,22 @@
+body {
+    font-family: 'open-sans-serif';
+}
+
+#nav .category {
+    border-width: 1px;
+    border-style: solid;
+    border-color: grey;
+    margin: 1px;
+}
+
+.div_hover { 
+    background-color: #FFFFFF; 
+}
+
+.div_hover:hover { 
+    background-color: #434A5E; 
+}
+
+.category.div_hover:active {
+    color: blue;
+}
