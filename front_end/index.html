@@ -1,6 +1,7 @@
  <html>
   <head>
     <link rel="stylesheet" href="./src/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.14.1/dist/tf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
     <script type="text/javascript" src="./src/plotly-latest.min.js"></script>
@@ -8,36 +9,44 @@
   </head>
   <body>
     <div id="container">
+        <div class="topnav">
+            <input type="text" id="search" placeholder="Search..">
+        </div>
         <div id="sidebar">
           <br>
           <br>
-          <h5>Crete / Update Record</h5>
-          <form>
-            <label for="year">Year:</label>
-            <input type="text" id="year" name="year" placeholder="required" required>
-            <label for="leading_cause">Leading cause:</label>
-            <input type="text" id="leading_cause" name="leading_cause" placeholder="required" required>
-            <label for="sex">Sex:</label>
-            <input type="text" id="sex" name="sex" placeholder="required" required>
-            <label for="deaths">Deaths:</label>
-            <input type="text" id="deaths" name="deaths" placeholder="required" required>
-            <label for="race_ethnicity">Race:</label>
-            <input type="text" id="race_ethnicity" name="race_ethnicity">
-            <label for="death_rate">Death rate:</label>
-            <input type="text" id="death_rate" name="death_rate">
-            <label for="age_adjusted_death_rate">Age adjusted death rate:</label>
-            <input type="text" id="age_adjusted_death_rate" name="age_adjusted_death_rate">
-            <input type="button" value="Submit">
-          </form>
+          <span class="form-container">
+            <h5>Create / Update Record</h5>
+            <form id="form-app">
+              <label for="year">Year:</label>
+              <input type="text" id="year" name="year">
+              <label for="leading_cause">Leading cause:</label>
+              <input type="text" id="leading_cause" name="leading_cause">
+              <label for="sex">Sex:</label>
+              <input type="text" id="sex" name="sex">
+              <label for="deaths">Deaths:</label>
+              <input type="text" id="deaths" name="deaths">
+              <!-- <label for="race_ethnicity">Race:</label>
+              <input type="text" id="race_ethnicity" name="race_ethnicity">
+              <label for="death_rate">Death rate:</label>
+              <input type="text" id="death_rate" name="death_rate">
+              <label for="age_adjusted_death_rate">Age adjusted death rate:</label>
+              <input type="text" id="age_adjusted_death_rate" name="age_adjusted_death_rate"> -->
+              <input type="submit" value="Submit">
+            </form>
+          </span>
         </div>
         <div id="content">
-          <div class="topnav">
-            <input type="text" id="search" placeholder="Search..">
-          </div>
-          <div><h2>Leading causes of deaths</h2></div>
+          <div><h2>Leading causes of death</h2></div>
           <div id="nav"></div>
         </div>     
     </div>
     <div id="tester" style="width:600px;height:250px;"></div>
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+      </div>
+    </div>
   </body>
 </html>

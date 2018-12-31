@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     document.getElementById("nav").addEventListener("click", navHandler);
     document.getElementById("search").addEventListener("input", searchHandler);
+    document.getElementById("form-app").addEventListener("submit", formHandler);
 })
 
 
@@ -77,8 +78,8 @@ function dataHandler(x_vals, y_vals, data_arr) {
     });
 
     const trace1 = {
-        x: data_arr.filter(el => el.sex === 'M' || el.sex === 'Male').map(el => el.year),
-        y: data_arr.filter(el => el.sex === 'M' || el.sex === 'Male').map(el => el.deaths),
+        x: data_arr.filter(el => el.sex.toLocaleLowerCase() === 'm' || el.sex === 'male').map(el => el.year),
+        y: data_arr.filter(el => el.sex.toLocaleLowerCase() === 'm' || el.sex === 'male').map(el => el.deaths),
         mode: 'markers+Text',
         type: 'scatter',
         name: 'Male',
@@ -104,8 +105,8 @@ function dataHandler(x_vals, y_vals, data_arr) {
     };
 
     const trace3 = {
-        x: data_arr.filter(el => el.sex === 'F' || el.sex === 'Female').map(el => el.year),
-        y: data_arr.filter(el => el.sex === 'F' || el.sex === 'Female').map(el => el.deaths),
+        x: data_arr.filter(el => el.sex.toLocaleLowerCase() === 'f' || el.sex === 'female').map(el => el.year),
+        y: data_arr.filter(el => el.sex.toLocaleLowerCase() === 'f' || el.sex.toLocaleLowerCase() === 'female').map(el => el.deaths),
         mode: 'markers+Text',
         type: 'scatter',
         name: 'Female',
@@ -119,7 +120,7 @@ function dataHandler(x_vals, y_vals, data_arr) {
     let layout = {
         title: chartTitle,
         autosize: true,
-        width: 500,
+        width: 700,
         height: 500,
         margin: {
           l: 50,
@@ -165,19 +166,70 @@ function findYIntercept(n, sumOfX, sumOfY, slope) {
 function loadNavigation(arg) {
     const divRoot = document.getElementById("nav");
     divRoot.innerHTML = "";
-    const categories = arg.map(el => el.leading_cause).filter((x, i, a) => a.indexOf(x) == i);
+    const categories = arg.map(el => el.leading_cause).filter((x, i, a) => a.indexOf(x) === i);
+
+    // Get the modal
+    const modal = document.getElementById('myModal');
+
+    // Get the <span> element that closes the modal
+    const span = document.getElementsByClassName("close")[0];
 
     for(el of categories) {
         const divNode = document.createElement("div");
+        const btnNode = document.createElement("button");
+
+        btnNode.innerText = "Edit"
+
+        // When the user clicks the button, open the modal 
+        btnNode.onclick = function(e) {
+            const q = e.target.parentElement.innerText.slice(0, -4);
+            fetch("http://localhost:3000/api/v1/diseases")
+                .then(res => res.json())
+                .then(json => {
+                    const qResults = json.filter(el => el.leading_cause === q);
+                    modal.firstElementChild.innerHTML = "";
+                    modal.firstElementChild.innerHTML = '<span class="close">&times;</span>';
+                    const span = document.getElementsByClassName("close")[0];
+                    span.onclick = function() {
+                        modal.style.display = "none";
+                    }
+
+                    for(el of qResults) {
+                        const divChild = document.createElement("div");
+                        const aChild = document.createElement("a");
+                        aChild.dataset.id = el.id;
+                        aChild.href="javascript:;";
+                        aChild.onclick = editHandler;
+                        aChild.innerText = `${el.year}, ${el.leading_cause}, ${el.sex}`;
+                        divChild.appendChild(aChild);
+                        modal.firstElementChild.appendChild(divChild);
+                    }
+                })
+            modal.style.display = "block";
+        }
+
         divNode.className = "category div_hover";
         divNode.innerText = el;
+        divNode.appendChild(btnNode);
         divRoot.appendChild(divNode);
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
     
 }
 
 function navHandler(e) {
-    const categoryName = e.target.innerText;
+    const categoryName = e.target.innerText.slice(0, -4);
 
     if(e.target.classList.contains("category")){
         fetch("http://localhost:3000/api/v1/diseases")
@@ -201,4 +253,50 @@ function searchHandler(e) {
             loadNavigation(qResults);
         })
     
+}
+
+function editHandler(e){
+    const dataID = e.target.dataset.id;
+    // debugger;
+    fetch(`http://localhost:3000/api/v1/diseases/${dataID}`)
+        .then(res => res.json())
+        .then(json => {
+            // debugger;
+            const form = document.getElementById("form-app");
+            form.dataset.id = json.id;
+            form.children[1].value = json.year;
+            form.children[3].value = json.leading_cause;
+            form.children[5].value = json.sex;
+            form.children[7].value = json.deaths;
+            // form.children[9].value = json.race_ethnicity;
+            // form.children[11].value = json.death_rate;
+            // form.children[13].value = json.age_adjusted_death_rate;
+            form.children[8].value = "update";
+        })
+
+    document.getElementById('myModal').style.display = "none";
+
+}
+
+function formHandler(e) {
+    // debugger;
+    e.preventDefault();
+    const yearInput = e.target.children[1].value;
+    const leadingCauseInput = e.target.children[3].value;
+    const sexInput = e.target.children[5].value;
+    const deathsInput = e.target.children[7].value;
+
+    if(e.target.lastElementChild.value == "Submit"){
+        fetch("http://localhost:3000/api/v1/diseases", { method: "POST", 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ year: yearInput, leading_cause: leadingCauseInput, sex: sexInput, deaths: deathsInput })
+    })
+    } else {
+        const dataID = e.target.dataset.id;
+        fetch(`http://localhost:3000/api/v1/diseases/${dataID}`, { method: "PATCH", 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ year: yearInput, leading_cause: leadingCauseInput, sex: sexInput, deaths: deathsInput })
+    })
+    window.location.reload();
+    }
 }
