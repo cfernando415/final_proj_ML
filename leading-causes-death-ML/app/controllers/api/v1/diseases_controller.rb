@@ -16,4 +16,9 @@ class Api::V1::DiseasesController < ApplicationController
         @disease.update(year: params[:year], leading_cause: params[:leading_cause], sex: params[:sex], deaths: params[:deaths])
         render json: @disease
     end
+    def destroy
+        Disease.find(params[:id]).destroy
+        # head: no_content
+        # render json: @disease
+    end
 end

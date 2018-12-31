@@ -177,39 +177,14 @@ function loadNavigation(arg) {
     for(el of categories) {
         const divNode = document.createElement("div");
         const btnNode = document.createElement("button");
-
-        btnNode.innerText = "Edit"
+        
+        btnNode.innerText = "Manage";
 
         // When the user clicks the button, open the modal 
-        btnNode.onclick = function(e) {
-            const q = e.target.parentElement.innerText.slice(0, -4);
-            fetch("http://localhost:3000/api/v1/diseases")
-                .then(res => res.json())
-                .then(json => {
-                    const qResults = json.filter(el => el.leading_cause === q);
-                    modal.firstElementChild.innerHTML = "";
-                    modal.firstElementChild.innerHTML = '<span class="close">&times;</span>';
-                    const span = document.getElementsByClassName("close")[0];
-                    span.onclick = function() {
-                        modal.style.display = "none";
-                    }
-
-                    for(el of qResults) {
-                        const divChild = document.createElement("div");
-                        const aChild = document.createElement("a");
-                        aChild.dataset.id = el.id;
-                        aChild.href="javascript:;";
-                        aChild.onclick = editHandler;
-                        aChild.innerText = `${el.year}, ${el.leading_cause}, ${el.sex}`;
-                        divChild.appendChild(aChild);
-                        modal.firstElementChild.appendChild(divChild);
-                    }
-                })
-            modal.style.display = "block";
-        }
+        btnNode.onclick = manageBtnHandler;
 
         divNode.className = "category div_hover";
-        divNode.innerText = el;
+        divNode.innerText = `${el} `;
         divNode.appendChild(btnNode);
         divRoot.appendChild(divNode);
     }
@@ -229,7 +204,8 @@ function loadNavigation(arg) {
 }
 
 function navHandler(e) {
-    const categoryName = e.target.innerText.slice(0, -4);
+    const categoryName = e.target.innerText.slice(0, -7);
+    // debugger;
 
     if(e.target.classList.contains("category")){
         fetch("http://localhost:3000/api/v1/diseases")
@@ -278,6 +254,12 @@ function editHandler(e){
 
 }
 
+function deleteHandler(e) {
+    const dataID = e.target.dataset.id;
+    e.target.parentElement.parentElement.remove()
+    fetch(`http://localhost:3000/api/v1/diseases/${dataID}`, { method: "DELETE" });
+}
+
 function formHandler(e) {
     // debugger;
     e.preventDefault();
@@ -299,4 +281,52 @@ function formHandler(e) {
     })
     window.location.reload();
     }
+}
+
+function manageBtnHandler(e) {
+    // Get the modal
+    const modal = document.getElementById('myModal');
+
+    // Get the <span> element that closes the modal
+    const span = document.getElementsByClassName("close")[0];
+
+    const q = e.target.parentElement.innerText.slice(0, -7);
+
+    fetch("http://localhost:3000/api/v1/diseases")
+        .then(res => res.json())
+        .then(json => {
+            const qResults = json.filter(el => el.leading_cause === q);
+
+            modal.firstElementChild.innerHTML = "";
+            modal.firstElementChild.innerHTML = '<span class="close">&times;</span>';
+
+            const span = document.getElementsByClassName("close")[0];
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            for(el of qResults) {
+                const divChild = document.createElement("div");
+                const aChild1 = document.createElement("a");
+                const aChild2 = document.createElement("a");
+                
+                // aChild1.dataset.id = el.id;
+                // aChild2.dataset.id = el.id;
+
+                aChild1.href="javascript:;";
+                aChild2.href="javascript:;";
+                aChild1.onclick = editHandler;
+                aChild2.onclick = deleteHandler;
+
+                aChild1.innerHTML = `<span style="padding-right:4px" data-id=${el.id}>edit</span>`;
+                aChild2.innerHTML = `<span style="padding-left:4px" data-id=${el.id}>delete</span>`;
+
+                divChild.innerText = `${el.year}, ${el.leading_cause}, ${el.sex}: `;
+                divChild.appendChild(aChild1);
+                divChild.appendChild(aChild2);
+                modal.firstElementChild.appendChild(divChild);
+            }
+        })
+    modal.style.display = "block";
 }
