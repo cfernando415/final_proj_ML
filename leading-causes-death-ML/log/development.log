@@ -40139,3 +40139,181 @@ Processing by Api::V1::DiseasesController#index as */*
 Completed 200 OK in 259ms (Views: 157.5ms | ActiveRecord: 68.2ms)
 
 
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:28:24 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (4.3ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (59.08ms)
+Completed 200 OK in 96ms (Views: 90.8ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:30:34 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (3.7ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (55.89ms)
+Completed 200 OK in 91ms (Views: 86.9ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:41:35 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (5.9ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (69.71ms)
+Completed 200 OK in 115ms (Views: 108.3ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:41:38 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (5.3ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (50.01ms)
+Completed 200 OK in 94ms (Views: 87.8ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:41:42 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (3.3ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (52.43ms)
+Completed 200 OK in 82ms (Views: 78.4ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:41:47 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (4.2ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (49.44ms)
+Completed 200 OK in 78ms (Views: 73.9ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:50:21 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (4.6ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (43.63ms)
+Completed 200 OK in 80ms (Views: 73.9ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:50:39 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (4.4ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (40.89ms)
+Completed 200 OK in 71ms (Views: 65.9ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:50:43 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (3.4ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (43.13ms)
+Completed 200 OK in 74ms (Views: 70.3ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:50:44 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (3.5ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (48.78ms)
+Completed 200 OK in 77ms (Views: 73.6ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:50:44 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (5.8ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (47.96ms)
+Completed 200 OK in 82ms (Views: 75.7ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:50:46 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (5.3ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (49.23ms)
+Completed 200 OK in 84ms (Views: 78.5ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:50:49 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (3.6ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (44.56ms)
+Completed 200 OK in 73ms (Views: 69.2ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:50:54 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (4.5ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (41.54ms)
+Completed 200 OK in 75ms (Views: 70.3ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/api/v1/diseases/3226" for 127.0.0.1 at 2019-01-02 11:51:02 -0500
+Processing by Api::V1::DiseasesController#show as */*
+  Parameters: {"id"=>"3226"}
+  [1m[36mDisease Load (0.3ms)[0m  [1m[34mSELECT  "diseases".* FROM "diseases" WHERE "diseases"."id" = ? LIMIT ?[0m  [["id", 3226], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/diseases_controller.rb:7
+[active_model_serializers] Rendered DiseaseSerializer with ActiveModelSerializers::Adapter::Attributes (0.24ms)
+Completed 200 OK in 50ms (Views: 0.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:51:25 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (4.0ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (50.32ms)
+Completed 200 OK in 78ms (Views: 74.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:51:40 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (4.1ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (45.36ms)
+Completed 200 OK in 77ms (Views: 72.0ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:52:24 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (3.4ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (42.36ms)
+Completed 200 OK in 82ms (Views: 78.0ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:52:26 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (5.9ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (48.46ms)
+Completed 200 OK in 87ms (Views: 80.4ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/api/v1/diseases/3830" for 127.0.0.1 at 2019-01-02 11:52:32 -0500
+Processing by Api::V1::DiseasesController#show as */*
+  Parameters: {"id"=>"3830"}
+  [1m[36mDisease Load (0.5ms)[0m  [1m[34mSELECT  "diseases".* FROM "diseases" WHERE "diseases"."id" = ? LIMIT ?[0m  [["id", 3830], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/diseases_controller.rb:7
+[active_model_serializers] Rendered DiseaseSerializer with ActiveModelSerializers::Adapter::Attributes (0.37ms)
+Completed 200 OK in 4ms (Views: 1.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:52:43 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (4.3ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (42.87ms)
+Completed 200 OK in 75ms (Views: 70.8ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:54:25 -0500
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (3.7ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (51.48ms)
+Completed 200 OK in 82ms (Views: 77.5ms | ActiveRecord: 3.7ms)
+
+
