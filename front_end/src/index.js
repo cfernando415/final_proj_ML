@@ -43,7 +43,7 @@ function dataHandler(x_vals, y_vals, data_arr) {
 
     // const learningRate = 0.0042;
     const learningRate = 0.00000001;
-    const optimizer = tf.train.adam(learningRate);
+    const optimizer = tf.train.sgd(learningRate);
 
     const n = data_arr.length;
     const sumOfX = x_vals.reduce((x, j) => x + j, 0);

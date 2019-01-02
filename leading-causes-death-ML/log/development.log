@@ -40129,3 +40129,13 @@ Processing by Api::V1::DiseasesController#destroy as */*
 Completed 204 No Content in 49ms (ActiveRecord: 46.1ms)
 
 
+Started GET "/api/v1/diseases" for 127.0.0.1 at 2019-01-02 11:26:59 -0500
+  [1m[35m (11.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/carlofernando/.rvm/gems/ruby-2.3.3/gems/activerecord-5.2.2/lib/active_record/log_subscriber.rb:98
+Processing by Api::V1::DiseasesController#index as */*
+  [1m[36mDisease Load (66.9ms)[0m  [1m[34mSELECT id, year, leading_cause, sum(deaths) AS deaths, sex FROM "diseases" GROUP BY year, leading_cause, sex[0m
+  ↳ app/controllers/api/v1/diseases_controller.rb:4
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (68.1ms)
+Completed 200 OK in 259ms (Views: 157.5ms | ActiveRecord: 68.2ms)
+
+
