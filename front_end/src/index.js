@@ -192,12 +192,14 @@ function loadNavigation(arg) {
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
+        window.location.reload();
     }
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            window.location.reload();
         }
     }
     
@@ -258,30 +260,33 @@ function deleteHandler(e) {
     const dataID = e.target.dataset.id;
     e.target.parentElement.parentElement.remove()
     fetch(`http://localhost:3000/api/v1/diseases/${dataID}`, { method: "DELETE" });
+    window.location.reload();
 }
 
 function formHandler(e) {
     // debugger;
     e.preventDefault();
-    const yearInput = e.target.children[1].value;
+    const yearInput = parseInt(e.target.children[1].value);
     const leadingCauseInput = e.target.children[3].value;
     const sexInput = e.target.children[5].value;
-    const deathsInput = e.target.children[7].value;
+    const deathsInput = parseInt(e.target.children[7].value.replace(/\,/g,''));
+    // debugger;
 
-    if(e.target.lastElementChild.value == "Submit"){
+    if(e.target.lastElementChild.value === "Submit"){
         fetch("http://localhost:3000/api/v1/diseases", { method: "POST", 
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ year: yearInput, leading_cause: leadingCauseInput, sex: sexInput, deaths: deathsInput })
         });
         e.target.reset();
+
     } else {
         const dataID = e.target.dataset.id;
         fetch(`http://localhost:3000/api/v1/diseases/${dataID}`, { method: "PATCH", 
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ year: yearInput, leading_cause: leadingCauseInput, sex: sexInput, deaths: deathsInput })
-    })
-    window.location.reload();
+        })
     }
+    window.location.reload();
 }
 
 function manageBtnHandler(e) {
@@ -305,6 +310,7 @@ function manageBtnHandler(e) {
 
             span.onclick = function() {
                 modal.style.display = "none";
+                window.location.reload();
             }
 
             for(el of qResults) {
