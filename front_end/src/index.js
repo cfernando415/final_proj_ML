@@ -88,8 +88,8 @@ function dataHandler(x_vals, y_vals, data_arr) {
         }
     };
 
-    // const lineX = [Math.min.apply(null, x_vals), (Math.max.apply(null, x_vals))];
-    const lineX = x_vals.filter((v, i, a) => a.indexOf(v) === i)
+    const lineX = [Math.min.apply(null, x_vals), (Math.max.apply(null, x_vals) + 2)];
+    // const lineX = x_vals.filter((v, i, a) => a.indexOf(v) === i)
     const ys = tf.tidy(() => predict(lineX, m, b));
     // const ys = tf.tidy(() => predict(lineX));
     lineY = ys.dataSync();
